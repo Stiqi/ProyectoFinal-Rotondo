@@ -1,0 +1,36 @@
+.container {
+  background-color: var(--comp-background);
+  border-radius: 0 0 20px 20px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  min-width: 325px;
+  max-height: 64px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  z-index: 50;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-item {
+  font-size: 1em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    min-width: 260px;
+  }
+}
