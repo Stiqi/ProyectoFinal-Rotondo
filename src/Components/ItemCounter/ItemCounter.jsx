@@ -22,7 +22,7 @@ const ItemCounter = ({ price, itemId }) => {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <span style={{ fontSize: "1.5em", margin: "1em" }}>
         ${price * counter}
       </span>

@@ -9,8 +9,10 @@
 
 .title {
   background-color: var(--comp-background);
+  font-family: var(--primary-ff);
+  font-style: italic;
   border-radius: 10px;
-  font-size: 1.5em;
+  font-size: 1.8em;
   text-align: center;
   padding: 6px 0;
   width: 100%;

@@ -26,6 +26,8 @@
 
 .price {
   margin: 8px 0;
+  padding: 4px 0;
+  background-color: rgba(253, 154, 68, 0.6);
 }
 
 .detail {

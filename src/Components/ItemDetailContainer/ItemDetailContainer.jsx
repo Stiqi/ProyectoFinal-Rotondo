@@ -45,7 +45,7 @@ const ItemDetailContainer = () => {
         </div>
         <div className={styles.cta}>
           <div className={styles.description}>
-            <p>{product.description}</p>
+            <h2>{product.description}</h2>
           </div>
           <ul className={styles.list}>
             <li>Tamaño: {product.size}cm</li>

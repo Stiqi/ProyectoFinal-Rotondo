@@ -26,19 +26,13 @@
   padding: 1em;
 }
 
-@media screen and (max-width: 1780px) {
-  .item-list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
   .item-list {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .item-list {
     grid-template-columns: 1fr;
   }

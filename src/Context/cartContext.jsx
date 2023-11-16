@@ -18,7 +18,6 @@ const CartComponentContext = ({ children }) => {
 
       return updatedCart;
     });
-    console.log(cart);
   };
 
   return (

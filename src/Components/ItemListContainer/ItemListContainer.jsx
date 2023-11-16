@@ -16,6 +16,7 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const productsRef = collection(db, "products");
+
     getDocs(productsRef)
       .then((snapshot) => {
         setItems(
