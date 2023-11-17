@@ -3,13 +3,14 @@ import { CartContext } from "../../Context/cartContext";
 import styles from "./cart.module.css";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
+import BriefItem from "../BriefItem/BriefItem";
 
 const Cart = () => {
   const { cart, precioTotal } = useContext(CartContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(precioTotal);
+    // TO DO : Enviar pedido a Firebase
   };
 
   return Object.keys(cart).length > 0 ? (
@@ -30,7 +31,7 @@ const Cart = () => {
                 <input
                   type="text"
                   id="name"
-                  placeholder="Tu nombre"
+                  placeholder="Joaquin Rotondo"
                   maxLength={24}
                 />
               </label>
@@ -39,19 +40,26 @@ const Cart = () => {
                 <input
                   type="numeric"
                   id="phone"
-                  placeholder="Tu teléfono"
+                  placeholder="1111222233"
                   maxLength={10}
                 />
               </label>
-              <label htmlFor="card">
-                Tarjeta
+              <label htmlFor="mail">
+                Mail
                 <input
-                  type="numeric"
-                  id="card"
-                  placeholder="Tarjeta"
-                  maxLength={16}
+                  type="email"
+                  id="meil"
+                  placeholder="ejemplo@ejemplo.com"
                 />
               </label>
+              <div className={styles.brief}>
+                <h4>Tu pedido</h4>
+                <ul>
+                  {Object.keys(cart).map((id) => (
+                    <BriefItem key={id} itemId={id} />
+                  ))}
+                </ul>
+              </div>
               <p className={styles.total}>TOTAL: ${precioTotal}</p>
               <button className={`boton ${styles.send}`} type="submit">
                 Hacer Pedido
@@ -62,7 +70,7 @@ const Cart = () => {
             <p>
               Te faltó algo?
               <br />
-              <Link to={"/store"} className={` ${styles.back}`}>
+              <Link to={"/"} className={` ${styles.back}`}>
                 ¡Volver a la tienda!
               </Link>
             </p>
@@ -72,8 +80,8 @@ const Cart = () => {
     </div>
   ) : (
     <div className={styles.empty}>
-      <h3>Tu carrito está vacío!</h3>
-      <Link to={"/store"} className={`boton ${styles["back-empty"]}`}>
+      <h3>Tu carrito está vacío</h3>
+      <Link to={"/"} className={`boton ${styles["back-empty"]}`}>
         Volver a la tienda
       </Link>
     </div>

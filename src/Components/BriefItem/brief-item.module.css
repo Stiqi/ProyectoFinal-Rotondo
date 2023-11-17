@@ -1,0 +1,14 @@
+ul {
+  background-color: #ffdcae;
+  list-style: none;
+  width: 100%;
+}
+
+li {
+  margin: 8px;
+  padding: 0.2em 0;
+}
+
+h4 {
+  text-decoration: underline;
+}

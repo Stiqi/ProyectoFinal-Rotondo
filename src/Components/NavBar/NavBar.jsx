@@ -11,7 +11,7 @@ const items = [
     key: "1",
     label: (
       <Link
-        to={"/store"}
+        to={"/"}
         className={styles["dropdown-item"]}
         style={{ fontWeight: 800 }}
       >

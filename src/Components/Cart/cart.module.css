@@ -65,12 +65,12 @@ input {
 
 .back {
   width: 30%;
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
-  transition: 500ms;
 }
 
 .back:hover {
+  transition: 500ms;
   color: var(--primary-color);
 }
 
@@ -86,8 +86,15 @@ h3 {
   font-size: 1.5em;
   font-weight: 800;
   color: var(--primary-color);
-  background-color: rgb(255, 226, 189);
+  background-color: #ffdcae;
   width: 100%;
+}
+
+.brief::before {
+  content: "";
+  display: block;
+  border-bottom: 4px solid var(--primary-color);
+  margin-bottom: 8px;
 }
 
 @media screen and (max-width: 900px) {
