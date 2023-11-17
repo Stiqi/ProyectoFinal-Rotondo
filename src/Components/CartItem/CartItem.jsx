@@ -8,7 +8,8 @@ import { CartContext } from "../../Context/cartContext";
 
 const CartItem = ({ itemId }) => {
   const [item, setItem] = useState();
-  const { cart, handleCart, setCantidadTotal } = useContext(CartContext);
+  const { cart, handleCart, setCantidadTotal, setPrecioTotal } =
+    useContext(CartContext);
 
   useEffect(() => {
     const itemRef = doc(db, "products", itemId);
@@ -21,6 +22,9 @@ const CartItem = ({ itemId }) => {
   const quitarDelCarrito = () => {
     handleCart(itemId, 0);
     setCantidadTotal((prevCantidadTotal) => prevCantidadTotal - cart[itemId]);
+    setPrecioTotal(
+      (prevPrecioTotal) => prevPrecioTotal - item.price * cart[itemId]
+    );
   };
 
   return item ? (
@@ -36,7 +40,9 @@ const CartItem = ({ itemId }) => {
         </div>
         <div className={styles.counter}>
           <ItemCounter itemId={itemId} key={itemId} price={item.price} />
-          <button onClick={quitarDelCarrito} className={styles.quitar}>Quitar del carrito</button>
+          <button onClick={quitarDelCarrito} className={styles.quitar}>
+            Quitar del carrito
+          </button>
         </div>
       </div>
     </div>

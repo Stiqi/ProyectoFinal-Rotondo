@@ -116,6 +116,22 @@ button {
   margin-bottom: 2em;
 }
 
+.boton {
+  color: var(--text-color);
+  text-decoration: none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 0.3em 0.5em;
+  transition: 500ms;
+}
+
+.boton:hover,
+.boton:focus {
+  background-color: var(--accent-color);
+  padding: 0.3em 1.5em;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

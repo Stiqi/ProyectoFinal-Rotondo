@@ -3,6 +3,7 @@
   border-radius: 10px;
   padding: 1em;
   display: flex;
+  text-align: center;
 }
 
 .objects {
@@ -12,11 +13,103 @@
   gap: 16px;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-direction: column;
+  margin: 16px 0;
+}
+
+.send {
+  font-size: 1em;
+  font-weight: 800;
+}
+
+input {
+  border: 1px solid black;
+  padding: 0.3em 1em;
+  margin: 0.5em 0;
+  display: flex;
+  text-align: center;
+}
+
+.checkout {
+  width: 30%;
+  text-align: center;
+  position: relative;
+  padding: 1em 0 1em 1em;
+}
+
+.checkout-details {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+  top: 100px;
+}
+
+.empty {
+  background-color: var(--comp-background);
+  border-radius: 10px;
+  padding: 1em;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  font-weight: 700;
+}
+
+.back {
+  width: 30%;
+  text-decoration: none;
+  color: black;
+  transition: 500ms;
+}
+
+.back:hover {
+  color: var(--primary-color);
+}
+
+.back-empty {
+  width: 30%;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+.total {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--primary-color);
+  background-color: rgb(255, 226, 189);
+  width: 100%;
+}
+
 @media screen and (max-width: 900px) {
   .container {
     flex-direction: column;
+    align-items: center;
   }
+
   .objects {
     width: 100%;
+  }
+
+  .checkout {
+    width: 100%;
+    margin-top: 2em;
+    padding: 0;
+  }
+
+  .checkout::before {
+    content: "";
+    display: block;
+    border-bottom: 4px solid var(--primary-color);
+    margin-bottom: 8px;
   }
 }

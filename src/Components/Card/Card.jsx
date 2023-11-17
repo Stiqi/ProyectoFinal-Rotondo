@@ -11,7 +11,7 @@ const Card = ({ image, title, price, id }) => {
       <p className={style.title}>{title}</p>
       <p className={style.price}>${price} c/u</p>
       <ItemCounter price={price} itemId={id} />
-      <Link to={`/item/${id}`} className={style.detail}>
+      <Link to={`/item/${id}`} className="boton">
         Ver Detalle
       </Link>
     </div>

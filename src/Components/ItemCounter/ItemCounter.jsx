@@ -3,7 +3,8 @@ import style from "./item-counter.module.css";
 import { CartContext } from "../../Context/cartContext";
 
 const ItemCounter = ({ price, itemId }) => {
-  const { handleCart, cart, setCantidadTotal } = useContext(CartContext);
+  const { handleCart, cart, setCantidadTotal, setPrecioTotal } =
+    useContext(CartContext);
   const initialCounter = cart[itemId] || 0;
   const [counter, setCounter] = useState(initialCounter);
 
@@ -12,6 +13,7 @@ const ItemCounter = ({ price, itemId }) => {
       setCounter((prevCounter) => prevCounter - 1);
       setCantidadTotal((prevCantidadTotal) => prevCantidadTotal - 1);
       handleCart(itemId, counter - 1);
+      setPrecioTotal((prevPrecioTotal) => prevPrecioTotal - price);
     }
   };
 
@@ -19,6 +21,7 @@ const ItemCounter = ({ price, itemId }) => {
     setCounter((prevCounter) => prevCounter + 1);
     handleCart(itemId, counter + 1);
     setCantidadTotal((prevCantidadTotal) => prevCantidadTotal + 1);
+    setPrecioTotal((prevPrecioTotal) => prevPrecioTotal + price);
   };
 
   return (
