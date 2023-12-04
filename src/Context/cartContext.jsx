@@ -5,6 +5,7 @@ export const CartContext = createContext();
 const CartComponentContext = ({ children }) => {
   const [cantidadTotal, setCantidadTotal] = useState(0);
   const [precioTotal, setPrecioTotal] = useState(0);
+  const [itemNames, setItemNames] = useState({});
   const [cart, setCart] = useState({});
 
   const handleCart = (itemId, cantidad) => {
@@ -21,12 +22,21 @@ const CartComponentContext = ({ children }) => {
     });
   };
 
+  const resetCart = () => {
+    setCantidadTotal(0);
+    setPrecioTotal(0);
+    setCart({});
+  };
+
   return (
     <CartContext.Provider
       value={{
-        cantidadTotal,
         cart,
+        cantidadTotal,
         precioTotal,
+        itemNames,
+        resetCart,
+        setItemNames,
         setCantidadTotal,
         handleCart,
         setPrecioTotal,

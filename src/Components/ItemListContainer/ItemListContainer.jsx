@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import style from "./item-list-container.module.css";
 import Card from "../Card/Card";
 import { db } from "../../firebase/client";
 import { collection, getDocs } from "firebase/firestore";
+import { CartContext } from "../../Context/cartContext";
 
 const CapitalizeCategory = (category) => {
   return category[0].toUpperCase() + category.slice(1);
@@ -13,20 +14,24 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [filteredCatalog, setFilteredCatalog] = useState([]);
   const { categoryId } = useParams();
+  const { setItemNames } = useContext(CartContext);
 
   useEffect(() => {
     const productsRef = collection(db, "products");
+    const itemNamesObject = {};
 
     getDocs(productsRef)
       .then((snapshot) => {
         setItems(
           snapshot.docs.map((doc) => {
+            itemNamesObject[doc.id] = doc.data().title;
             return {
               id: doc.id,
               ...doc.data(),
             };
           })
         );
+        setItemNames(itemNamesObject);
       })
       .catch((error) => {
         console.error("Error:", error.message);
@@ -54,11 +59,11 @@ const ItemListContainer = () => {
         <div className={style["item-list"]}>
           {filteredCatalog.map((item) => (
             <Card
+              key={item.id}
               title={item.title}
               image={item.image}
               price={item.price}
               id={item.id}
-              key={item.id}
             />
           ))}
         </div>

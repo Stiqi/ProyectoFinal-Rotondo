@@ -6,6 +6,7 @@ import NotFound from "./Components/NotFound/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartComponentContext from "./Context/cartContext";
 import Cart from "./Components/Cart/Cart";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </CartComponentContext>
   );

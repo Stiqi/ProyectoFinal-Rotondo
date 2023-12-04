@@ -30,17 +30,16 @@ Desarrollar mis habilidades con React, conseguir experiencia y por supuesto, la 
 
     Si el carrito tiene objetos:
         -Se ven los objetos dentro del carrito, cada item tiene un contador y un boton para sacarlo del carrito
-        -Hay un checkout form (aún sin funcionalidad ni form validation, no era parte de la consigna), un brief del pedido con la
-        cantidad y el nombre de cada objeto en el carrito y un total del precio
+        -Hay un checkout form, un brief del pedido con la cantidad y el nombre de cada objeto en el carrito y un total del precio
 
     Si el carrito está vacío:
         -Se ve un texto que dice "Tu carrito está vacío" y aparece un boton para volver a la tienda
 
 ## Tecnologías Utilizadas
 
-- CSS
-- JavaScript
 - React
+- JavaScript
+- CSS
 - Firebase (Firestore, Storage)
 
 ## Librerias de componentes

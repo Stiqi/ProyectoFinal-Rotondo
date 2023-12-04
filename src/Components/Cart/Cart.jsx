@@ -1,17 +1,62 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../Context/cartContext";
 import styles from "./cart.module.css";
 import CartItem from "../CartItem/CartItem";
-import { Link } from "react-router-dom";
 import BriefItem from "../BriefItem/BriefItem";
+import { Link } from "react-router-dom";
+import { db } from "../../firebase/client";
+import { addDoc, collection } from "firebase/firestore";
 
 const Cart = () => {
-  const { cart, precioTotal } = useContext(CartContext);
+  const { cart, resetCart, precioTotal, itemNames } = useContext(CartContext);
+  const [orderId, setOrderId] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TO DO : Enviar pedido a Firebase
+    const productosEnCarrito = [];
+
+    Object.keys(cart).map((id) => {
+      productosEnCarrito.push({
+        producto: itemNames[id],
+        cantidad: cart[id],
+      });
+    });
+
+    const order = {
+      comprador: {
+        nombre: e.target.name.value,
+        telefono: e.target.phone.value,
+        mail: e.target.mail.value,
+      },
+      pedido: productosEnCarrito,
+      total: precioTotal,
+    };
+
+    const orderCollection = collection(db, "orders");
+
+    addDoc(orderCollection, order).then(({ id }) => setOrderId(id));
   };
+
+  useEffect(() => {
+    orderId && resetCart();
+  }, [orderId]);
+
+  if (orderId) {
+    return (
+      <div className={styles.empty}>
+        <h3 style={{ color: "green" }}>¡Orden Enviada! </h3>
+        <p style={{ lineHeight: "32px" }}>
+          El ID de tu compra es: <br />{" "}
+          <span style={{ color: "green" }}>{orderId}</span> <br /> no lo
+          pierdas! <br />
+          Pronto te contactaremos para iniciar el pago
+        </p>
+        <Link to={"/"} className={`boton ${styles["back-empty"]}`}>
+          Seguir comprando
+        </Link>
+      </div>
+    );
+  }
 
   return Object.keys(cart).length > 0 ? (
     <div className={styles.container}>
@@ -33,6 +78,7 @@ const Cart = () => {
                   id="name"
                   placeholder="Joaquin Rotondo"
                   maxLength={24}
+                  required={true}
                 />
               </label>
               <label htmlFor="phone">
@@ -42,14 +88,16 @@ const Cart = () => {
                   id="phone"
                   placeholder="1111222233"
                   maxLength={10}
+                  required={true}
                 />
               </label>
               <label htmlFor="mail">
                 Mail
                 <input
                   type="email"
-                  id="meil"
+                  id="mail"
                   placeholder="ejemplo@ejemplo.com"
+                  required={true}
                 />
               </label>
               <div className={styles.brief}>

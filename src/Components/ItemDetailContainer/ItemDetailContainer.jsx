@@ -52,7 +52,7 @@ const ItemDetailContainer = () => {
             <li>Precio unitario: ${product.price}</li>
           </ul>
           <div>
-            <ItemCounter price={product.price} itemId={id} />
+            <ItemCounter price={product.price} itemId={product.id} />
           </div>
         </div>
       </div>
