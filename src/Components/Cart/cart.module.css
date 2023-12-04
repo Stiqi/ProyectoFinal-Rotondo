@@ -22,17 +22,17 @@ form {
   margin: 16px 0;
 }
 
-.send {
-  font-size: 1em;
-  font-weight: 800;
-}
-
 input {
   border: 1px solid black;
   padding: 0.3em 1em;
   margin: 0.5em 0;
   display: flex;
   text-align: center;
+}
+
+.send {
+  font-size: 1em;
+  font-weight: 800;
 }
 
 .checkout {
@@ -47,7 +47,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 2em;
+  gap: 1em;
   top: 100px;
 }
 

@@ -47,8 +47,8 @@ const Cart = () => {
         <h3 style={{ color: "green" }}>¡Orden Enviada! </h3>
         <p style={{ lineHeight: "32px" }}>
           El ID de tu compra es: <br />{" "}
-          <span style={{ color: "green" }}>{orderId}</span> <br /> no lo
-          pierdas! <br />
+          <span style={{ color: "green" }}>{orderId}</span> <br /> ¡NO LO
+          PIERDAS! <br />
           Pronto te contactaremos para iniciar el pago
         </p>
         <Link to={"/"} className={`boton ${styles["back-empty"]}`}>
@@ -68,52 +68,51 @@ const Cart = () => {
       </div>
       <div className={styles.checkout}>
         <div className={styles["checkout-details"]}>
-          <div>
-            <h2>CHECKOUT</h2>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name">
-                Nombre
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Joaquin Rotondo"
-                  maxLength={24}
-                  required={true}
-                />
-              </label>
-              <label htmlFor="phone">
-                Teléfono
-                <input
-                  type="numeric"
-                  id="phone"
-                  placeholder="1111222233"
-                  maxLength={10}
-                  required={true}
-                />
-              </label>
-              <label htmlFor="mail">
-                Mail
-                <input
-                  type="email"
-                  id="mail"
-                  placeholder="ejemplo@ejemplo.com"
-                  required={true}
-                />
-              </label>
-              <div className={styles.brief}>
-                <h4>Tu pedido</h4>
-                <ul>
-                  {Object.keys(cart).map((id) => (
-                    <BriefItem key={id} itemId={id} />
-                  ))}
-                </ul>
-              </div>
-              <p className={styles.total}>TOTAL: ${precioTotal}</p>
-              <button className={`boton ${styles.send}`} type="submit">
-                Hacer Pedido
-              </button>
-            </form>
-          </div>
+          <h2>CHECKOUT</h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">
+              Nombre
+              <input
+                type="text"
+                id="name"
+                placeholder="Joaquin Rotondo"
+                maxLength={24}
+                required={true}
+                autoCapitalize="words"
+              />
+            </label>
+            <label htmlFor="phone">
+              Teléfono
+              <input
+                type="numeric"
+                id="phone"
+                placeholder="1111222233"
+                maxLength={10}
+                required={true}
+              />
+            </label>
+            <label htmlFor="mail">
+              Mail
+              <input
+                type="email"
+                id="mail"
+                placeholder="ejemplo@ejemplo.com"
+                required={true}
+              />
+            </label>
+            <div className={styles.brief}>
+              <h4>Tu pedido</h4>
+              <ul>
+                {Object.keys(cart).map((id) => (
+                  <BriefItem key={id} itemId={id} />
+                ))}
+              </ul>
+            </div>
+            <p className={styles.total}>TOTAL: ${precioTotal}</p>
+            <button className={`boton ${styles.send}`} type="submit">
+              Hacer Pedido
+            </button>
+          </form>
           <div>
             <p>
               Te faltó algo?
